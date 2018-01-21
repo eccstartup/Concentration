@@ -14,8 +14,11 @@ class Concentration
     
     var indexOfOneAndOnlyFaceUpCard: Int?
     
+    var numberOfPairs = 0
+    
     init(numberOfPairsOfCards: Int) {
-        for _ in 0..<numberOfPairsOfCards {
+        numberOfPairs = numberOfPairsOfCards
+        for _ in 0..<numberOfPairs {
             let card = Card()
             cards += [card, card]
         }
@@ -42,9 +45,14 @@ class Concentration
     }
     
     func resetCards() {
-        for index in cards.indices {
-            cards[index].isFaceUp = false
-            cards[index].isMatched = false
+//        for index in cards.indices {
+//            cards[index].isFaceUp = false
+//            cards[index].isMatched = false
+//        }
+        cards = [Card]()
+        for _ in 0..<numberOfPairs {
+            let card = Card()
+            cards += [card, card]
         }
         shuffleCards()
     }
